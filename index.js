@@ -2,10 +2,10 @@ const express = require('express');
 const app = express();
 
 const config = require('./config');
+const videosApi = require('./routes/videos');
 
-app.use('/', (req, res) => {
-  res.status(200).send({ message: 'Todo ok' });
-});
+app.use(express.json()); // Reemplaza la importacion de body-parser
+videosApi(app);
 
 app.listen(config.port, () => {
   console.log(`App listening port http://localhost:${config.port}`);
